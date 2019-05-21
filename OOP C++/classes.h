@@ -2,11 +2,16 @@
 #define PI 3.14
 using namespace std;
 
-
 class Complex {
-private:
+protected:
 	double real, imag;
 public:
+	Complex() {
+
+	}
+	~Complex(){
+
+	}
 	bool setValues(double r, double i) {
 		real = r;
 		imag = i;
@@ -44,7 +49,25 @@ public:
 		return res;
 	}
 	void print() {
-		cout << "Postac algebraiczna: " << real << " + i" << imag << endl;
-		cout << "Postac trygonometryczna: " << modulus() << "(cos(" << arg() << ") + i*sin(" << arg() << ")\n";
+		cout << "Postac algebraiczna: " << real <<" + i" << imag << endl;
+		cout << "Postac trygonometryczna: " << modulus() << "(cos(" << arg() << ") + i*sin(" << arg() << "))\n";
+	}
+};
+
+class trigComplex : public Complex {
+public:
+	trigComplex() {
+
+	}
+
+	~trigComplex() {
+
+	}
+
+	bool setValues(double z, double fi) {
+		double radians = fi * PI / 180;
+		real = z * cos(radians);
+		imag = z * sin(radians);
+		return true;
 	}
 };
